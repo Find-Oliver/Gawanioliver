@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GawaNiOliver | Monthly Accomplishment Report</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f5fbf'/%3E%3Cpath d='M9 16l5 5 9-10' stroke='%23f08a24' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+<script>try{var t=localStorage.getItem('gno:theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}catch(e){}</script>
+<style>
+:root{--bg:#f4f6f9;--card:#fff;--tx:#1b2430;--mut:#5b6675;--bd:#cfd6df;--ac:#1f5fbf;--acx:#fff;--bad:#b3261e;--badbg:#fdecea;--warn:#7a4f00;--warnbg:#fff2cc;--thbg:#eef2f7;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161c;--card:#1b212a;--tx:#e8ecf1;--mut:#9aa6b5;--bd:#333d4a;--ac:#5b9bff;--acx:#0b1220;--bad:#ff8a80;--badbg:#3a1f1d;--warn:#ffd37a;--warnbg:#3a2e10;--thbg:#252d38;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12161c;--card:#1b212a;--tx:#e8ecf1;--mut:#9aa6b5;--bd:#333d4a;--ac:#5b9bff;--acx:#0b1220;--bad:#ff8a80;--badbg:#3a1f1d;--warn:#ffd37a;--warnbg:#3a2e10;--thbg:#252d38;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:16px;margin:0 0 14px}
+.narrow{max-width:420px;margin:8vh auto 0}
+h1{font-size:1.3rem;margin:0 0 6px}
+h2{font-size:1.05rem;margin:0 0 10px}
+label{display:block;font-size:.85rem;color:var(--mut);margin:10px 0 4px}
+input,textarea,select{width:100%;padding:9px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
+input.bad{border-color:var(--bad);background:var(--badbg)}
+button{font:inherit;padding:9px 14px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer}
+button.pri{background:var(--ac);color:var(--acx);border-color:var(--ac);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 12px}
+.orow{display:grid;grid-template-columns:1fr 110px 40px;gap:8px;margin-bottom:8px}
+.orow button{padding:6px}
+.item{border:1px solid var(--bd);border-radius:8px;padding:10px;margin-bottom:8px}
+.ih{display:flex;justify-content:space-between;gap:8px}
+.mut{color:var(--mut)}.small{font-size:.85rem}
+.err{color:var(--bad);font-size:.9rem;margin-top:6px}
+.warn{background:var(--warnbg);color:var(--warn);padding:6px 8px;border-radius:6px;margin-top:6px;font-size:.88rem}
+.btns{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.btns.s button{padding:4px 10px;font-size:.85rem}
+.fmt{display:grid;gap:8px}
+.fmt label{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--bd);border-radius:8px;padding:10px;margin:0;color:var(--tx);font-size:1rem;cursor:pointer}
+.fmt input{width:auto;margin-top:5px}
+.fmt label:has(input:checked){border-color:var(--ac);outline:1px solid var(--ac)}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border:1px solid var(--bd);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--thbg)}
+.n{text-align:right;white-space:nowrap}
+tfoot td{font-weight:700}
+tr.sub td{background:var(--thbg);font-weight:600}
+.sig{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px;margin-top:40px}
+.sig div{border-top:1px solid var(--tx);padding-top:4px;text-align:center}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+details summary{cursor:pointer;font-weight:600}
+details ol{padding-left:20px;margin:10px 0 0}
+details li{margin-bottom:6px}
+.ok{color:#1e7a3c}
+@media print{.noprint{display:none!important}body{background:#fff;color:#000}.wrap{max-width:none;padding:0}.card{border:0;padding:0;margin:0}.mut{color:#000}.tw{overflow:visible}table{font-size:10.5pt}thead{display:table-header-group}tr{break-inside:avoid}.sig{break-inside:avoid}th,tr.sub td{background:#eee!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}th,td{border-color:#888}.sig div{border-color:#000}}
+
+:root{--or:#f08a24}
+.off{display:none!important}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.2rem;color:var(--ac);margin:0}
+.brand i{font-style:normal;color:var(--or)}
+.hdr{border-bottom:3px solid var(--or)}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav button{border:0;background:none;font-weight:600}
+nav button[aria-current=page]{background:var(--ac);color:var(--acx)}
+.tt{font-size:1.1rem;padding:5px 10px}
+:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+.stat{border:1px solid var(--bd);border-radius:8px;padding:10px;margin:0 0 8px}
+.stat b{font-size:1.6rem;display:block}
+.okmsg{color:#1e7a3c}[data-theme=dark] .okmsg{color:#6fd48f}
+@media print{html:root[data-theme]{--bg:#fff;--card:#fff;--tx:#000;--bd:#888;--thbg:#eee;--mut:#000}}
+</style>
+<style id="pg"></style>
+</head>
+<body>
+<div class="wrap noprint" id="memwarn" hidden><div class="warn">Hindi gumagana ang browser storage dito. Mawawala ang notes pag isinara ang page.</div></div>
+
+<div id="login" class="wrap noprint">
+  <div class="card narrow">
+    <div class="top"><h1 class="brand">📋 Gawa<i>Ni</i>Oliver</h1><button type="button" class="tt"></button></div>
+    <p class="mut">Mag-login gamit ang email mo. Ang notes mo ay hiwalay sa notes ng ibang user.</p>
+    <label for="em">Email</label>
+    <input id="em" type="email" autocomplete="email" placeholder="pangalan@example.com">
+    <div class="err" id="emerr"></div>
+    <div class="btns"><button class="pri" id="loginbtn" type="button">Mag-login</button></div>
+    <p class="mut small">Naka-save ang notes sa browser ng device na ito at hindi nagsi-sync sa ibang device. Walang password at hindi ito tunay na security, kaya huwag gamitin ang email ng iba.</p>
+  </div>
+</div>
+
+<div id="app" class="wrap" hidden>
+  <div class="card noprint hdr">
+    <div class="top">
+      <h1 class="brand"><svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#1f5fbf"/><path d="M9 16l5 5 9-10" stroke="#f08a24" stroke-width="3" fill="none"/></svg>Gawa<i>Ni</i>Oliver</h1>
+      <nav aria-label="Pangunahing menu"><button type="button" data-go="dash">Dashboard</button><button type="button" data-go="notes">My Notes</button><button type="button" data-go="details">Report Details</button><button type="button" data-go="builder">Report Builder</button></nav>
+      <button type="button" class="tt"></button>
+    </div>
+    <div class="top small" style="margin-top:8px"><div><b>Naka-login:</b> <span id="who"></span> · <span class="mut" id="savest"></span></div><button type="button" id="logout">Mag-logout</button></div>
+  </div>
+
+  <div class="card noprint" data-s="dash"><h2>Dashboard</h2><div class="grid" id="dstats"></div>
+    <div class="btns"><button class="pri" type="button" data-act="newnote">+ New Note</button><button type="button" data-go="builder">Gumawa ng report</button><button type="button" data-go="details">Ituloy ang Report Details</button></div></div>
+  <div class="card noprint" data-s="dash"><h2>Kamakailang na-update na notes</h2><div id="drec"></div></div>
+  <div class="card noprint" data-s="dash"><h2>Backup at restore</h2>
+    <p class="mut small">Naka-save ang data sa localStorage ng browser na ito at hindi nagsi-sync sa ibang device. Mag-export ng JSON para sa backup. Ang import ay nagdadagdag lang; hindi nito pinapalitan ang kasalukuyang data.</p>
+    <div class="btns"><button type="button" id="bexp">I-export ang JSON backup</button><button type="button" id="bimp">I-import ang JSON</button><input type="file" id="bfile" accept="application/json,.json" hidden></div><div class="small okmsg" id="bmsg" role="status"></div></div>
+
+  <div class="card noprint" data-s="notes" id="noteform"><h2>My Notes</h2>
+    <div class="grid"><div><label for="n-title">Note title *</label><input id="n-title"></div><div><label for="n-date">Date *</label><input id="n-date" type="date"></div></div>
+    <label for="n-nature">Nature of work / Activity *</label><input id="n-nature">
+    <div class="grid"><div><label for="n-office">Office / Department</label><input id="n-office"></div><div><label for="n-qty">Quantity</label><input id="n-qty" type="number" min="0" step="any" inputmode="decimal"></div></div>
+    <label for="n-remarks">Remarks</label><input id="n-remarks">
+    <label for="n-details">Additional details</label><textarea id="n-details" rows="3"></textarea>
+    <div class="err" id="nerr"></div>
+    <div class="btns"><button class="pri" type="button" id="nsave">I-save ang note</button><button type="button" id="ncancel" hidden>Kanselahin ang edit</button><span class="small okmsg" id="nmsg" role="status" style="align-self:center"></span></div></div>
+  <div class="card noprint" data-s="notes"><h2>Mga saved na notes <span class="mut small" id="ncount"></span></h2>
+    <div class="grid"><div><label for="ns">Hanapin</label><input id="ns" type="search"></div><div><label for="nm">Buwan</label><input id="nm" type="month"></div></div>
+    <div id="nlist" style="margin-top:10px"></div></div>
+  <div class="card noprint" data-s="builder"><h2>Pumili ng notes para sa report</h2>
+    <p class="mut small">Kokopyahin lang ang napiling notes bilang entry. Hindi mababago o mabubura ang orihinal na note. Puwede ring mag-add ng entry nang mano-mano sa ibaba.</p>
+    <div class="fmt" id="pklist"></div><div class="btns"><button class="pri" type="button" id="pkadd">Idagdag ang napili sa report</button><span class="small okmsg" id="pkmsg" role="status" style="align-self:center"></span></div></div>
+
+  <details class="card noprint" data-s="dash" open>
+    <summary>Paano gamitin</summary>
+    <ol>
+      <li>Mag-login gamit ang email mo. Sa email na iyon lang naka-save ang notes mo.</li>
+      <li>Sa <b>Hakbang 1</b>, ilagay ang title, department o office, period, at pangalan ng Prepared by. Required ang mga may asterisk (*).</li>
+      <li>Sa <b>Hakbang 2</b>, ilagay ang activity, ang mga office at qty nila, at ang Total. Pindutin ang <b>= Sum</b> kung gusto mong kunin ang Total mula sa sum ng mga office. Pindutin ang <b>Idagdag ang entry</b>.</li>
+      <li>Kung iba ang Total sa sum ng mga office, may ⚠ na babala. Hindi binabago ng app ang Total mo. Lumalabas lang ang babalang ito sa editing screen, hindi sa final report.</li>
+      <li>Sa <b>Hakbang 3</b>, piliin ang format ng table na gusto mo.</li>
+      <li>Piliin ang paper size, orientation, at margins. Pindutin ang <b>Gumawa ng table</b>. Pagkatapos, <b>Export to Word (.docx)</b>, <b>Kopyahin</b> para i-paste sa Excel, o <b>I-print</b>.</li>
+      <li>Mag-logout kapag tapos na, lalo na kung shared ang device.</li>
+    </ol>
+  </details>
+
+  <div class="card noprint" data-s="details">
+    <h2>Hakbang 1: Detalye ng report</h2>
+    <label for="f-dept">Department / Office</label><input id="f-dept" placeholder="Hal. Provincial General Services Office">
+    <label for="f-title">Report title *</label><input id="f-title">
+    <div class="grid">
+      <div><label for="f-start">Period start *</label><input id="f-start" type="date"></div>
+      <div><label for="f-end">Period end *</label><input id="f-end" type="date"></div>
+      
+    </div>
+    <div class="grid">
+      <div><label for="f-prepared">Prepared by *</label><input id="f-prepared"></div>
+      <div><label for="f-position">Position ng Prepared by</label><input id="f-position"></div>
+      <div><label for="f-approved">Approved by</label><input id="f-approved"></div>
+    </div>
+  </div>
+
+  <div class="card noprint" data-s="builder">
+    <h2 id="formtitle">Hakbang 2: Magdagdag ng entry</h2>
+    <label for="e-act">Activity / Description *</label>
+    <input id="e-act" placeholder="Hal. Pamamahagi ng supplies">
+    <label>Mga office at qty * <span class="mut">(kahit isa, kumpletuhin ang bawat row)</span></label>
+    <div id="rows"></div>
+    <div class="btns s"><button type="button" id="addrow">+ Dagdag na office</button></div>
+    <div class="grid">
+      <div>
+        <label for="e-total">Total *</label>
+        <input id="e-total" type="number" min="0" step="any" inputmode="decimal">
+      </div>
+      <div><label>Sum ng mga office</label><div><b id="livesum">0</b> <button type="button" id="usesum" class="" style="padding:4px 10px">= Sum</button></div></div>
+    </div>
+    <div class="err" id="formerr"></div>
+    <div class="btns"><button class="pri" type="button" id="saveentry">Idagdag ang entry</button><button type="button" id="cancel" hidden>Kanselahin ang edit</button></div>
+  </div>
+
+  <div class="card noprint" data-s="builder">
+    <h2>Mga entry mo</h2>
+    <div id="list"></div>
+    <div id="overall"></div>
+  </div>
+
+  <div class="card noprint" data-s="builder">
+    <h2>Hakbang 3: Piliin ang format ng table</h2>
+    <div class="fmt" id="formats">
+      <label><input type="radio" name="fmt" value="standard"><span><b>Standard</b><br><span class="mut small">No., Activity, listahan ng office at qty, Total. Pinakamadaling basahin.</span></span></label>
+      <label><input type="radio" name="fmt" value="compact"><span><b>Compact</b><br><span class="mut small">Isang linya bawat entry: No., Activity (kasama ang mga office), Total. Maikli, pang-isang pahina.</span></span></label>
+      <label><input type="radio" name="fmt" value="detailed"><span><b>Detailed</b><br><span class="mut small">Isang row bawat office, may subtotal bawat activity.</span></span></label>
+      <label><input type="radio" name="fmt" value="summary"><span><b>Per office</b><br><span class="mut small">Kabuuang qty ng bawat office sa lahat ng activity.</span></span></label>
+    </div>
+    <div class="grid" style="margin-top:12px"><div><label for="f-paper">Paper size</label><select id="f-paper"><option value="a4">A4</option><option value="letter">US Letter</option></select></div><div><label for="f-orient">Orientation</label><select id="f-orient"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div><div><label for="f-margin">Margins</label><select id="f-margin"><option value="narrow">Narrow (10 mm)</option><option value="normal">Normal (20 mm)</option><option value="wide">Wide (25 mm)</option></select></div></div>
+    <p class="mut small">Sa print dialog, i-off ang Headers and footers para hindi lumabas ang petsa, URL, at page title ng browser. Hindi ito makokontrol ng app.</p>
+    <div class="err" id="generr"></div>
+    <div class="btns"><button class="pri" type="button" id="gen">Gumawa ng table</button></div>
+  </div>
+
+  <div class="card" id="output" data-s="builder" hidden>
+    <div class="btns noprint" style="margin:0 0 12px"><button type="button" class="pri" id="docx">Export to Word (.docx)</button><button type="button" id="copy">Kopyahin</button><button type="button" id="print">I-print</button><span id="flash" class="mut small" style="align-self:center"></span></div>
+    <div id="out"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)},$$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+var rnd=function(n){return Math.round(n*1000)/1000};
+var mem={},user=null,D=null,editId=null,armDel=null;
+var ls={get:function(k){try{return localStorage.getItem(k)}catch(e){return mem[k]==null?null:mem[k]}},set:function(k,v){try{localStorage.setItem(k,v);return localStorage.getItem(k)===v}catch(e){mem[k]=v;$('#memwarn').hidden=false;return false}}};
+var ss={get:function(){try{return sessionStorage.getItem('pgso:user')}catch(e){return mem.u||null}},set:function(v){try{v?sessionStorage.setItem('pgso:user',v):sessionStorage.removeItem('pgso:user')}catch(e){mem.u=v}}};
+var def=function(){return {title:'Monthly Accomplishment Report',dept:'',start:'2026-10-01',end:'2026-10-31',prepared:'',position:'',approved:'',paper:'a4',orient:'portrait',margin:'normal',format:'standard',entries:[]}};
+var F=['title','dept','start','end','prepared','position','approved','paper','orient','margin'];
+function load(){var r=ls.get('pgso:data:'+user),o={};try{o=JSON.parse(r)||{}}catch(e){}D=Object.assign(def(),o);if(!Array.isArray(D.entries))D.entries=[];if(!Array.isArray(D.notes))D.notes=[];delete D.reviewed}
+function save(){var ok=ls.set('pgso:data:'+user,JSON.stringify(D)),s=$('#savest');s.textContent=ok?'Nai-save sa browser na ito.':'⚠ HINDI nai-save nang permanente. Mawawala ang notes pag isinara ang page.';s.style.color=ok?'':'var(--bad)'}
+function applyPage(){var p=D.paper==='letter'?'letter':'A4',o=D.orient==='landscape'?'landscape':'portrait',m={narrow:'10mm',normal:'20mm',wide:'25mm'}[D.margin]||'20mm';$('#pg').textContent='@page{size:'+p+' '+o+';margin:'+m+'}'}
+var sum=function(o){return rnd(o.reduce(function(a,x){return a+x.qty},0))};
+
+/* login */
+function login(){
+  var v=$('#em').value.trim().toLowerCase(),e=$('#emerr');
+  if(!v){e.textContent='Kailangan ilagay ang email.';return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){e.textContent='Hindi valid ang email. Halimbawa: pangalan@example.com';return}
+  e.textContent='';user=v;ss.set(v);start();
+}
+function start(){
+  $('#login').hidden=true;$('#app').hidden=false;$('#who').textContent=user;
+  load();F.forEach(function(k){$('#f-'+k).value=D[k]||''});
+  $$('input[name=fmt]').forEach(function(r){r.checked=r.value===D.format});
+  $('#output').hidden=true;applyPage();resetForm();renderList();nreset();renderNotes();show('dash');
+}
+function logout(){if(nd&&!confirm('May hindi pa na-save na note. Mag-logout pa rin?'))return;nd=false;ss.set(null);user=null;D=null;$('#app').hidden=true;$('#login').hidden=false;$('#em').value='';$('#output').hidden=true}
+$('#loginbtn').onclick=login;
+$('#em').addEventListener('keydown',function(e){if(e.key==='Enter')login()});
+$('#logout').onclick=logout;
+
+/* report details */
+F.forEach(function(k){$('#f-'+k).addEventListener('input',function(e){D[k]=e.target.value;e.target.classList.remove('bad');save();applyPage();renderList();if(!$('#output').hidden)renderOut()})});
+$$('input[name=fmt]').forEach(function(r){r.addEventListener('change',function(){D.format=r.value;save();$('#generr').textContent='';if(!$('#output').hidden)renderOut()})});
+
+/* entry form */
+function addRow(n,q){
+  var d=document.createElement('div');d.className='orow';
+  d.innerHTML='<input class="on" placeholder="Office / detalye" value="'+esc(n||'')+'"><input class="oq" type="number" min="0" step="any" inputmode="decimal" placeholder="Qty" value="'+esc(q==null?'':q)+'"><button type="button" aria-label="Alisin ang row">✕</button>';
+  d.querySelector('button').onclick=function(){d.remove();upd()};
+  d.querySelector('.oq').oninput=upd;
+  $('#rows').appendChild(d);
+}
+function upd(){var t=0;$$('#rows .oq').forEach(function(q){var v=parseFloat(q.value);if(!isNaN(v))t+=v});$('#livesum').textContent=rnd(t)}
+function resetForm(){editId=null;$('#e-act').value='';$('#e-total').value='';$('#rows').innerHTML='';addRow();upd();$('#formerr').textContent='';$('#formtitle').textContent='Hakbang 2: Magdagdag ng entry';$('#saveentry').textContent='Idagdag ang entry';$('#cancel').hidden=true;$$('#app .bad').forEach(function(x){x.classList.remove('bad')})}
+$('#addrow').onclick=function(){addRow()};
+$('#usesum').onclick=function(){$('#e-total').value=$('#livesum').textContent;$('#e-total').classList.remove('bad')};
+$('#cancel').onclick=resetForm;
+$('#e-act').addEventListener('input',function(e){e.target.classList.remove('bad')});
+$('#e-total').addEventListener('input',function(e){e.target.classList.remove('bad')});
+$('#saveentry').onclick=function(){
+  $$('#app .bad').forEach(function(x){x.classList.remove('bad')});
+  var m=[],act=$('#e-act'),tot=$('#e-total'),offs=[],rowBad=false,rows=$$('#rows .orow');
+  if(!act.value.trim()){act.classList.add('bad');m.push('Activity / Description')}
+  if(!rows.length)m.push('Kahit isang office');
+  rows.forEach(function(r){var n=r.querySelector('.on'),q=r.querySelector('.oq'),ok=true;
+    if(!n.value.trim()){n.classList.add('bad');ok=false}
+    if(q.value===''||isNaN(+q.value)||+q.value<0){q.classList.add('bad');ok=false}
+    if(ok)offs.push({name:n.value.trim(),qty:+q.value});else rowBad=true});
+  if(rowBad)m.push('Office at Qty sa bawat row');
+  if(tot.value===''||isNaN(+tot.value)||+tot.value<0){tot.classList.add('bad');m.push('Total')}
+  if(m.length){$('#formerr').textContent='Hindi pa makapagpatuloy. Kulang o mali pa: '+m.join(', ')+'.';return}
+  var e={id:editId||Date.now(),activity:act.value.trim(),offices:offs,total:+tot.value};
+  if(editId){D.entries=D.entries.map(function(x){return x.id===editId?e:x})}else D.entries.push(e);
+  save();resetForm();renderList();
+};
+
+/* list */
+function grand(){return rnd(D.entries.reduce(function(a,e){return a+e.total},0))}
+function renderList(){
+  var L=$('#list');
+  if(!D.entries.length){L.innerHTML='<p class="mut">Wala pang entry. Mag-add sa Hakbang 2.</p>';$('#overall').innerHTML='';return}
+  L.innerHTML=D.entries.map(function(e,i){var s=sum(e.offices);
+    return '<div class="item"><div class="ih"><b>'+(i+1)+'. '+esc(e.activity)+'</b><span>Total: <b>'+e.total+'</b></span></div>'
+    +'<div class="mut small">'+e.offices.map(function(o){return esc(o.name)+' – '+o.qty}).join('; ')+'</div>'
+    +(s!==e.total?'<div class="warn">⚠ Ang Total ('+e.total+') ay iba sa sum ng mga office ('+s+'). Hindi binago ang Total mo.</div>':'')
+    +'<div class="btns s"><button type="button" data-a="edit" data-id="'+e.id+'">I-edit</button><button type="button" data-a="del" data-id="'+e.id+'">'+(armDel===e.id?'Sigurado? Pindutin ulit':'Burahin')+'</button></div></div>'}).join('');
+  $('#overall').innerHTML='<p><b>Overall total: '+grand()+'</b></p>';
+}
+$('#list').addEventListener('click',function(ev){
+  var b=ev.target.closest('button');if(!b)return;var id=+b.dataset.id;
+  if(b.dataset.a==='del'){if(armDel===id){D.entries=D.entries.filter(function(x){return x.id!==id});armDel=null;save()}else armDel=id;renderList();return}
+  var e=D.entries.filter(function(x){return x.id===id})[0];if(!e)return;
+  resetForm();editId=id;$('#e-act').value=e.activity;$('#e-total').value=e.total;$('#rows').innerHTML='';e.offices.forEach(function(o){addRow(o.name,o.qty)});upd();
+  $('#formtitle').textContent='I-edit ang entry';$('#saveentry').textContent='I-save ang pagbabago';$('#cancel').hidden=false;$('#e-act').scrollIntoView({behavior:'smooth',block:'center'});
+});
+
+/* output */
+function rt(){var t=String(D.title||'').trim(),d=(D.dept||'').trim();if(d)t=t.replace(new RegExp('\\s*[\u2013\u2014-]\\s*'+d.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*$','i'),'');return t.replace(/\s+Notes(?=\s*[\u2013\u2014-]|\s*$)/i,'').trim()||t}
+function fd(s){var d=new Date(s+'T00:00:00');return isNaN(d)?s:d.toLocaleDateString('en-PH',{month:'long',day:'numeric',year:'numeric'})}
+function missing(){
+  var m=[];[['title','Title'],['start','Period start'],['end','Period end'],['prepared','Prepared by']].forEach(function(p){if(!String(D[p[0]]).trim()){m.push(p[1]);$('#f-'+p[0]).classList.add('bad')}});
+  if(D.start&&D.end&&D.start>D.end){m.push('Period (dapat mas maaga ang start kaysa end)');$('#f-start').classList.add('bad')}
+  if(!D.entries.length)m.push('Kahit isang entry');
+  return m;
+}
+function renderOut(){
+  var E=D.entries,f=D.format,cols,body='',foot='',g=grand();
+  var ol=function(e){return e.offices.map(function(o){return esc(o.name)+' – '+o.qty}).join('<br>')};
+  if(f==='standard'){
+    cols=['No.','Activity / Description','Offices (Qty)','Total'];
+    body=E.map(function(e,i){return '<tr><td>'+(i+1)+'</td><td>'+esc(e.activity)+'</td><td>'+ol(e)+'</td><td class="n">'+e.total+'</td></tr>'}).join('');
+    foot='<tr><td colspan="3">Overall total</td><td class="n">'+g+'</td></tr>';
+  }else if(f==='compact'){
+    cols=['No.','Activity (Offices)','Total'];
+    body=E.map(function(e,i){return '<tr><td>'+(i+1)+'</td><td>'+esc(e.activity)+' ('+e.offices.map(function(o){return esc(o.name)+' '+o.qty}).join(', ')+')</td><td class="n">'+e.total+'</td></tr>'}).join('');
+    foot='<tr><td colspan="2">Overall total</td><td class="n">'+g+'</td></tr>';
+  }else if(f==='detailed'){
+    cols=['No.','Activity','Office','Qty'];
+    body=E.map(function(e,i){return e.offices.map(function(o,j){return '<tr><td>'+(j?'':i+1)+'</td><td>'+(j?'':esc(e.activity))+'</td><td>'+esc(o.name)+'</td><td class="n">'+o.qty+'</td></tr>'}).join('')+'<tr class="sub"><td></td><td colspan="2">Total – '+esc(e.activity)+'</td><td class="n">'+e.total+'</td></tr>'}).join('');
+    foot='<tr><td colspan="3">Overall total</td><td class="n">'+g+'</td></tr>';
+  }else{
+    cols=['Office','Kabuuang qty','Bilang ng activity'];var map={},ord=[];
+    E.forEach(function(e){e.offices.forEach(function(o){var k=o.name.toLowerCase();if(!map[k]){map[k]={n:o.name,q:0,a:{}};ord.push(k)}map[k].q+=o.qty;map[k].a[e.id]=1})});
+    var tq=0;body=ord.map(function(k){var r=map[k];tq+=r.q;return '<tr><td>'+esc(r.n)+'</td><td class="n">'+rnd(r.q)+'</td><td class="n">'+Object.keys(r.a).length+'</td></tr>'}).join('');
+    foot='<tr><td>Kabuuan ng mga office</td><td class="n">'+rnd(tq)+'</td><td></td></tr>';
+  }
+  var sg=[[ 'Prepared by',D.prepared,D.position],['Approved by',D.approved,'']].filter(function(s,i){return i===0||s[1].trim()}).map(function(s){return '<div><b>'+esc(s[1])+'</b>'+(s[2]?'<br>'+esc(s[2]):'')+'<br><span class="mut small">'+s[0]+'</span></div>'}).join('');
+  $('#out').innerHTML=(D.dept&&D.dept.trim()?'<div style="font-weight:600">'+esc(D.dept.trim())+'</div>':'')+'<h2 style="font-size:1.2rem;margin-bottom:2px">'+esc(rt())+'</h2><p class="mut" style="margin:0 0 10px">'+fd(D.start)+' – '+fd(D.end)+'</p>'
+    +'<div class="tw"><table><thead><tr>'+cols.map(function(c,i){return '<th'+(/Total|Qty|qty|activity$/.test(c)&&i>0&&c!=='Activity / Description'&&c!=='Activity (Offices)'?' class="n"':'')+'>'+c+'</th>'}).join('')+'</tr></thead><tbody>'+body+'</tbody><tfoot>'+foot+'</tfoot></table></div><div class="sig">'+sg+'</div>';
+}
+$('#gen').onclick=function(){
+  $$('#app .bad').forEach(function(x){x.classList.remove('bad')});
+  var m=missing(),g=$('#generr');
+  if(m.length){g.textContent='Hindi pa makagawa ng table. Kulang o mali pa: '+m.join(', ')+'.';$('#output').hidden=true;return}
+  g.textContent='';renderOut();$('#output').hidden=false;$('#output').scrollIntoView({behavior:'smooth',block:'start'});
+};
+function flash(t){$('#flash').textContent=t;setTimeout(function(){$('#flash').textContent=''},3000)}
+$('#copy').onclick=function(){
+  var t=Array.prototype.slice.call($('#out table').rows).map(function(r){return Array.prototype.slice.call(r.cells).map(function(c){return c.innerText.replace(/\s*\n\s*/g,'; ').trim()}).join('\t')}).join('\n');
+  var done=function(){flash('Na-kopya na. I-paste sa Excel o Word.')};
+  var fb=function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){flash('Hindi nakopya. Piliin ang table at kopyahin nang mano-mano.')}a.remove()};
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,fb);else fb();
+};
+$('#print').onclick=function(){try{window.print()}catch(e){flash('Hindi gumana ang print dito. Gamitin ang Ctrl+P.')}};
+
+/* print: walang app title sa header ng browser */
+var T0=document.title;window.addEventListener('beforeprint',function(){document.title=' '});window.addEventListener('afterprint',function(){document.title=T0});
+
+/* Word export (JSZip + raw WordprocessingML) */
+var X=function(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')},tmp=document.createElement('div');
+function lines(el){return el.innerHTML.split(/<br\s*\/?>/i).map(function(h){tmp.innerHTML=h;return tmp.textContent.trim()})}
+function P(t,o){o=o||{};return '<w:p><w:pPr>'+(o.sp?'<w:spacing w:before="'+o.sp[0]+'" w:after="'+o.sp[1]+'"/>':'')+(o.al?'<w:jc w:val="'+o.al+'"/>':'')+'</w:pPr>'+(t?'<w:r><w:rPr>'+(o.b?'<w:b/>':'')+(o.sz?'<w:sz w:val="'+o.sz+'"/>':'')+'</w:rPr><w:t xml:space="preserve">'+X(t)+'</w:t></w:r>':'')+'</w:p>'}
+function TC(w,inner,o){o=o||{};return '<w:tc><w:tcPr><w:tcW w:w="'+w+'" w:type="dxa"/>'+(o.span>1?'<w:gridSpan w:val="'+o.span+'"/>':'')+(o.top?'<w:tcBorders><w:top w:val="single" w:sz="6" w:space="0" w:color="000000"/></w:tcBorders>':'')+(o.fill?'<w:shd w:val="clear" w:color="auto" w:fill="'+o.fill+'"/>':'')+'</w:tcPr>'+inner+'</w:tc>'}
+function T(tbl,W){
+  var rs=[].slice.call(tbl.rows),wt=[].map.call(rs[0].cells,function(c){return c.className==='n'?1.2:c.textContent.trim()==='No.'?0.7:3}),st=wt.reduce(function(a,b){return a+b},0),cw=wt.map(function(x){return Math.floor(W*x/st)});
+  var x='<w:tbl><w:tblPr><w:tblW w:w="'+W+'" w:type="dxa"/><w:tblBorders>'+['top','left','bottom','right','insideH','insideV'].map(function(s){return '<w:'+s+' w:val="single" w:sz="4" w:space="0" w:color="808080"/>'}).join('')+'</w:tblBorders><w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="90" w:type="dxa"/><w:right w:w="90" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>'+cw.map(function(w){return '<w:gridCol w:w="'+w+'"/>'}).join('')+'</w:tblGrid>';
+  rs.forEach(function(r){var sec=r.parentNode.tagName,hd=sec==='THEAD',sub=r.className==='sub',bold=hd||sub||sec==='TFOOT',fill=hd?'D9E2F3':sub?'EEEEEE':'',ci=0;
+    x+='<w:tr><w:trPr><w:cantSplit/>'+(hd?'<w:tblHeader/>':'')+'</w:trPr>';
+    [].forEach.call(r.cells,function(c){var sp=c.colSpan||1,w=0;for(var i=0;i<sp;i++)w+=cw[ci+i]||0;ci+=sp;
+      x+=TC(w,lines(c).map(function(t){return P(t,{b:bold,al:c.className==='n'?'right':''})}).join(''),{span:sp,fill:fill})});
+    x+='</w:tr>'});
+  return x+'</w:tbl>'}
+function S(W){
+  var d=[].slice.call(document.querySelectorAll('#out .sig>div')),n=d.length,cw=Math.floor(W*0.26),gap=n>1?Math.floor((W-n*cw)/(n-1)):0,g='',c='';
+  d.forEach(function(el,i){var L=lines(el);if(i){g+='<w:gridCol w:w="'+gap+'"/>';c+=TC(gap,P(''))}g+='<w:gridCol w:w="'+cw+'"/>';c+=TC(cw,L.map(function(t,j){return P(t,{al:'center',b:j===0,sz:j===L.length-1?18:0})}).join(''),{top:1})});
+  return P('',{sp:[600,0]})+'<w:tbl><w:tblPr><w:tblW w:w="'+(n*cw+(n-1)*gap)+'" w:type="dxa"/><w:tblLayout w:type="fixed"/></w:tblPr><w:tblGrid>'+g+'</w:tblGrid><w:tr><w:trPr><w:cantSplit/></w:trPr>'+c+'</w:tr></w:tbl>'+P('')}
+function buildDocx(){
+  var ps=D.paper==='letter'?[12240,15840]:[11906,16838],land=D.orient==='landscape',pw=land?ps[1]:ps[0],ph=land?ps[0]:ps[1],m={narrow:567,normal:1134,wide:1417}[D.margin]||1134,W=pw-2*m;
+  var H='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>',NS='xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"';
+  var body=(D.dept&&D.dept.trim()?P(D.dept.trim(),{b:1,al:'center',sz:24,sp:[0,40]}):'')+P(rt(),{b:1,al:'center',sz:32,sp:[0,40]})+P(fd(D.start)+' – '+fd(D.end),{al:'center',sz:22,sp:[0,200]})+T($('#out table'),W)+S(W)
+    +'<w:sectPr><w:pgSz w:w="'+pw+'" w:h="'+ph+'"'+(land?' w:orient="landscape"':'')+'/><w:pgMar w:top="'+m+'" w:right="'+m+'" w:bottom="'+m+'" w:left="'+m+'" w:header="708" w:footer="708" w:gutter="0"/></w:sectPr>';
+  var z=new JSZip();
+  z.file('[Content_Types].xml',H+'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>');
+  z.file('_rels/.rels',H+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>');
+  z.file('word/_rels/document.xml.rels',H+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>');
+  z.file('word/styles.xml',H+'<w:styles '+NS+'><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Calibri"/><w:sz w:val="21"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="0" w:line="259" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults></w:styles>');
+  z.file('word/document.xml',H+'<w:document '+NS+'><w:body>'+body+'</w:body></w:document>');
+  return z.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'})}
+function saveBlob(blob,name){
+  return Promise.resolve(window.claude&&window.claude.use?window.claude.use('downloads'):null).catch(function(){return null}).then(function(d){
+    if(d)return d.save({filename:name,data:blob});
+    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();return {status:'saved'}})}
+$('#docx').onclick=function(){
+  $$('#app .bad').forEach(function(x){x.classList.remove('bad')});
+  var m=missing();if(m.length){flash('Kulang o mali pa: '+m.join(', ')+'.');return}
+  if(!window.JSZip){flash('Hindi na-load ang JSZip. Kailangan ng internet para sa Word export.');return}
+  renderOut();
+  var nm=(D.title.replace(/[^\w\- ]+/g,'').trim().replace(/\s+/g,'-')||'Report')+'.docx';
+  buildDocx().then(function(b){return saveBlob(b,nm)}).then(function(r){flash(r&&r.status==='saved'?'Na-save ang Word file.':'Na-export ang file.')},function(e){flash(e&&e.code==='declined'?'Hindi na-save (kinansela).':'Hindi na-export ang file.')})};
+
+
+/* GawaNiOliver: theme, nav, notes, backup */
+function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.setItem('gno:theme',t)}catch(e){}$$('.tt').forEach(function(b){b.textContent=t==='dark'?'🌙':'☀️';b.setAttribute('aria-label',t==='dark'?'Dark Mode ang gamit. Pindutin para sa Light Mode':'Light Mode ang gamit. Pindutin para sa Dark Mode')})}
+setTheme(document.documentElement.dataset.theme==='dark'?'dark':'light');
+$$('.tt').forEach(function(b){b.onclick=function(){setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark')}});
+var nid=null,nd=false,sel={},NF=['title','date','nature','office','qty','remarks','details'];
+function show(s){$$('[data-s]').forEach(function(e){e.classList.toggle('off',e.dataset.s.split(' ').indexOf(s)<0)});$$('nav button').forEach(function(b){if(b.dataset.go===s)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});if(s==='dash')dash();if(s==='builder')pick();window.scrollTo(0,0)}
+function today(){return new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10)}
+function nv(k){return $('#n-'+k).value.trim()}
+function msg(id,t){var e=$(id);e.textContent=t;setTimeout(function(){e.textContent=''},3500)}
+function nreset(){nid=null;NF.forEach(function(k){$('#n-'+k).value=''});$('#n-date').value=today();$('#nerr').textContent='';$('#nsave').textContent='I-save ang note';$('#ncancel').hidden=true;nd=false}
+$('#noteform').addEventListener('input',function(){nd=true});
+$('#ncancel').onclick=nreset;
+document.addEventListener('click',function(ev){var b=ev.target.closest('[data-go],[data-act]');if(!b)return;if(b.dataset.go)show(b.dataset.go);else if(b.dataset.act==='newnote'){if(nd&&!confirm('May hindi pa na-save na pagbabago sa note form. Itapon?'))return;nreset();show('notes');$('#n-title').focus()}});
+$('#nsave').onclick=function(){
+  var m=[],q=nv('qty');
+  if(!nv('title'))m.push('Note title');if(!nv('date'))m.push('Date');if(!nv('nature'))m.push('Nature of work');
+  if(q!==''&&(isNaN(+q)||+q<0))m.push('Quantity (dapat 0 o higit pa)');
+  if(m.length){$('#nerr').textContent='Kulang o mali pa: '+m.join(', ')+'.';return}
+  var now=new Date().toISOString(),n={id:nid||Date.now(),created:now,updated:now},old=D.notes.filter(function(x){return x.id===nid})[0];
+  if(old)n.created=old.created;NF.forEach(function(k){n[k]=nv(k)});
+  if(old)D.notes=D.notes.map(function(x){return x.id===nid?n:x});else D.notes.push(n);
+  save();msg('#nmsg',old?'Na-update ang note.':'Na-save ang note.');nreset();renderNotes();
+};
+function renderNotes(){
+  var q=$('#ns').value.trim().toLowerCase(),mo=$('#nm').value;
+  var L=D.notes.filter(function(n){return(!mo||n.date.slice(0,7)===mo)&&(!q||NF.some(function(k){return String(n[k]||'').toLowerCase().indexOf(q)>=0}))}).sort(function(a,b){return a.date<b.date?1:-1});
+  $('#ncount').textContent='('+L.length+' sa '+D.notes.length+')';
+  $('#nlist').innerHTML=L.length?L.map(function(n){return '<div class="item"><div class="ih"><b>'+esc(n.title)+'</b><span class="mut small">'+esc(fd(n.date))+'</span></div><div>'+esc(n.nature)+'</div><div class="mut small">'+esc(n.office||'—')+' · Qty: '+esc(n.qty===''?'—':n.qty)+(n.remarks?' · '+esc(n.remarks):'')+'</div>'+(n.details?'<div class="small">'+esc(n.details)+'</div>':'')+'<div class="btns s"><button type="button" data-a="nedit" data-id="'+n.id+'">I-edit</button><button type="button" data-a="ndel" data-id="'+n.id+'">Burahin</button></div></div>'}).join(''):'<p class="mut">'+(D.notes.length?'Walang tumutugma sa hinahanap.':'Wala pang note. Pindutin ang + New Note sa Dashboard o gamitin ang form sa itaas.')+'</p>';
+}
+$('#ns').oninput=$('#nm').oninput=renderNotes;
+$('#nlist').addEventListener('click',function(ev){
+  var b=ev.target.closest('button');if(!b)return;var id=+b.dataset.id,n=D.notes.filter(function(x){return x.id===id})[0];if(!n)return;
+  if(b.dataset.a==='ndel'){if(confirm('Permanenteng buburahin ang note na "'+n.title+'". Hindi ito mababawi. Ituloy?')){D.notes=D.notes.filter(function(x){return x.id!==id});if(nid===id)nreset();save();renderNotes()}return}
+  if(nd&&!confirm('May hindi pa na-save na pagbabago sa form. Itapon at i-edit ang ibang note?'))return;
+  nreset();nid=id;NF.forEach(function(k){$('#n-'+k).value=n[k]||''});nd=false;$('#nsave').textContent='I-update ang note';$('#ncancel').hidden=false;$('#n-title').focus();
+});
+function dash(){
+  var m=new Date().toISOString().slice(0,7),N=D.notes;
+  $('#dstats').innerHTML=[['Total notes',N.length],['Notes na ginawa ngayong buwan',N.filter(function(n){return(n.created||'').slice(0,7)===m}).length],['Entry sa draft report',D.entries.length]].map(function(x){return '<div class="stat"><span class="mut small">'+x[0]+'</span><b>'+x[1]+'</b></div>'}).join('');
+  var r=N.slice().sort(function(a,b){return a.updated<b.updated?1:-1}).slice(0,5);
+  $('#drec').innerHTML=r.length?r.map(function(n){return '<div class="item"><b>'+esc(n.title)+'</b> <span class="mut small">· '+esc(new Date(n.updated).toLocaleString('en-PH'))+'</span></div>'}).join(''):'<p class="mut">Wala pang notes. Magsimula sa + New Note.</p>';
+}
+function pick(){
+  var N=D.notes.slice().sort(function(a,b){return a.date<b.date?1:-1});
+  $('#pklist').innerHTML=N.length?N.map(function(n){var used=D.entries.some(function(e){return e.src===n.id});return '<label><input type="checkbox" data-id="'+n.id+'"'+(sel[n.id]?' checked':'')+'><span><b>'+esc(n.title)+'</b><br><span class="mut small">'+esc(fd(n.date))+' · '+esc(n.office||'—')+' · Qty '+esc(n.qty===''?'0':n.qty)+'</span>'+(used?' <span class="small okmsg">✓ nasa report na</span>':'')+'</span></label>'}).join(''):'<p class="mut">Wala pang notes. Gumawa muna sa My Notes, o mag-add nang mano-mano sa ibaba.</p>';
+}
+$('#pklist').addEventListener('change',function(ev){var c=ev.target;if(c.dataset.id)sel[c.dataset.id]=c.checked});
+$('#pkadd').onclick=function(){
+  var c=0;D.notes.forEach(function(n,i){if(!sel[n.id]||D.entries.some(function(e){return e.src===n.id}))return;var q=+n.qty||0;D.entries.push({id:Date.now()+i,activity:n.nature,offices:[{name:n.office||'—',qty:q}],total:q,src:n.id});c++});
+  sel={};save();renderList();pick();msg('#pkmsg',c?c+' entry ang naidagdag. I-review sa Mga entry mo.':'Walang bagong napili.');
+};
+$('#bexp').onclick=function(){var b=new Blob([JSON.stringify({app:'GawaNiOliver',version:1,data:D},null,2)],{type:'application/json'});saveBlob(b,'GawaNiOliver-backup.json').then(function(){msg('#bmsg','Na-export ang backup.')})};
+$('#bimp').onclick=function(){$('#bfile').click()};
+$('#bfile').onchange=function(ev){var f=ev.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var x=JSON.parse(r.result),d=x.data||x,a=0,b=0;
+  (d.notes||[]).forEach(function(n){if(n&&n.id&&n.title&&!D.notes.some(function(y){return y.id===n.id})){D.notes.push(n);a++}});
+  (d.entries||[]).forEach(function(e){if(e&&e.id&&e.activity&&Array.isArray(e.offices)&&!D.entries.some(function(y){return y.id===e.id})){D.entries.push(e);b++}});
+  save();renderNotes();renderList();dash();msg('#bmsg','Na-import: '+a+' note, '+b+' entry.')}catch(e){msg('#bmsg','Hindi valid na backup file.')}ev.target.value=''};r.readAsText(f)};
+window.addEventListener('beforeunload',function(e){if(nd){e.preventDefault();e.returnValue=''}});
+var u=ss.get();if(u){user=u;start()}
+})();
+</script>
+</body>
+</html>
