@@ -151,6 +151,16 @@
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 0 12px;
       }
+      .approval-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 12px;
+      }
+      @media (max-width: 520px) {
+        .approval-grid {
+          grid-template-columns: 1fr;
+        }
+      }
       .orow {
         display: grid;
         grid-template-columns: 1fr 110px 40px;
@@ -437,7 +447,7 @@
         <div class="btns">
           <button class="pri" id="loginbtn" type="button">Mag-login</button>
         </div>
-        <p class="mut small">Naka-save ang notes sa browser or sa device mo.</p>
+        <p class="mut small">Naka-save ang notes sa browser or sa Email.</p>
       </div>
     </div>
 
@@ -632,17 +642,18 @@
             ><input id="f-end" type="date" />
           </div>
         </div>
-        <div class="grid">
+        <div class="approval-grid">
           <div>
             <label for="f-prepared">Prepared by *</label
             ><input id="f-prepared" />
-          </div>
-          <div>
             <label for="f-position">Position ng Prepared by</label
             ><input id="f-position" />
           </div>
           <div>
-            <label for="f-approved">Approved by</label><input id="f-approved" />
+            <label for="f-approved">Approved by</label>
+            <input id="f-approved" />
+            <label for="f-approvedPosition">Position of Approved by</label>
+            <input id="f-approvedPosition" />
           </div>
         </div>
       </div>
@@ -847,6 +858,7 @@
             prepared: "",
             position: "",
             approved: "",
+            approvedPosition: "",
             paper: "a4",
             orient: "portrait",
             margin: "normal",
@@ -862,6 +874,7 @@
           "prepared",
           "position",
           "approved",
+          "approvedPosition",
           "paper",
           "orient",
           "margin",
@@ -1352,7 +1365,7 @@
           }
           var sg = [
             ["Prepared by", D.prepared, D.position],
-            ["Approved by", D.approved, ""],
+            ["Approved by", D.approved, D.approvedPosition],
           ]
             .filter(function (s, i) {
               return i === 0 || s[1].trim();
