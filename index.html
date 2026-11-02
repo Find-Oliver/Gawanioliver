@@ -545,6 +545,137 @@
           --mut: #000;
         }
       }
+      @media (max-width: 840px) {
+        .hdr-main {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) 44px;
+          grid-template-areas:
+            "brand theme"
+            "nav nav";
+          align-items: center;
+          column-gap: 8px;
+          row-gap: 8px;
+        }
+        .hdr-title {
+          grid-area: brand;
+          min-width: 0;
+          white-space: nowrap;
+        }
+        .hdr-nav {
+          grid-area: nav;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 6px;
+          min-width: 0;
+        }
+        .hdr-nav button {
+          min-width: 0;
+          min-height: 44px;
+          padding: 8px 6px;
+          line-height: 1.25;
+          overflow-wrap: anywhere;
+        }
+        .hdr-theme {
+          grid-area: theme;
+          justify-self: end;
+          width: 44px;
+          min-height: 44px;
+          padding: 0;
+        }
+        .hdr-user-row {
+          flex-wrap: nowrap;
+          align-items: center;
+          gap: 8px;
+        }
+        .hdr-login-info {
+          flex: 1 1 auto;
+          min-width: 0;
+          overflow-wrap: anywhere;
+        }
+        #who {
+          overflow-wrap: anywhere;
+        }
+        #logout {
+          flex: 0 0 auto;
+          min-height: 44px;
+          white-space: nowrap;
+        }
+        button {
+          min-height: 44px;
+        }
+        .orow {
+          grid-template-columns: minmax(0, 1fr) minmax(72px, 110px) 44px;
+        }
+        .orow button {
+          min-height: 44px;
+          padding: 6px;
+        }
+        .ih {
+          flex-wrap: wrap;
+          min-width: 0;
+        }
+        .ih > b {
+          min-width: 0;
+          overflow-wrap: anywhere;
+        }
+        .warn,
+        #flash {
+          max-width: 100%;
+          overflow-wrap: anywhere;
+        }
+        .modal {
+          padding: 12px;
+        }
+        .modal-panel {
+          max-height: calc(100vh - 24px);
+          max-height: calc(100dvh - 24px);
+          padding: 16px 14px 8px;
+        }
+      }
+      @media (min-width: 481px) and (max-width: 840px) {
+        .hdr-nav {
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+      @media (max-width: 480px) {
+        .wrap {
+          padding: 12px;
+        }
+        .card {
+          padding: 12px;
+        }
+        .brand {
+          gap: 6px;
+          font-size: clamp(0.9rem, 4vw, 1.05rem);
+        }
+        .hdr-title svg {
+          flex: 0 0 26px;
+          width: 26px;
+          height: 26px;
+        }
+        .narrow .top {
+          flex-wrap: nowrap;
+        }
+        .narrow .tt {
+          flex: 0 0 44px;
+          width: 44px;
+          min-height: 44px;
+          padding: 0;
+        }
+        input,
+        textarea,
+        select {
+          min-width: 0;
+        }
+        .btns {
+          align-items: stretch;
+        }
+        .btns > button {
+          max-width: 100%;
+          overflow-wrap: anywhere;
+        }
+      }
     </style>
     <style id="pg"></style>
   </head>
@@ -612,8 +743,8 @@
 
     <div id="app" class="wrap" hidden>
       <div class="card noprint hdr">
-        <div class="top">
-          <h1 class="brand">
+        <div class="top hdr-main">
+          <h1 class="brand hdr-title">
             <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
               <rect width="32" height="32" rx="7" fill="#1f5fbf" />
               <path
@@ -624,16 +755,16 @@
               /></svg
             >WorkNote <i>by</i> Oliver
           </h1>
-          <nav aria-label="Pangunahing menu">
+          <nav class="hdr-nav" aria-label="Pangunahing menu">
             <button type="button" data-go="dash">Dashboard</button
             ><button type="button" data-go="notes">My Notes</button
             ><button type="button" data-go="details">Report Details</button
             ><button type="button" data-go="builder">Report Builder</button>
           </nav>
-          <button type="button" class="tt"></button>
+          <button type="button" class="tt hdr-theme"></button>
         </div>
-        <div class="top small" style="margin-top: 8px">
-          <div>
+        <div class="top small hdr-user-row" style="margin-top: 8px">
+          <div class="hdr-login-info">
             <b>Naka-login:</b> <span id="who"></span> ·
             <span class="mut" id="savest"></span>
           </div>
