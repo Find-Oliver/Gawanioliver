@@ -535,6 +535,95 @@
       [data-theme="dark"] .okmsg {
         color: #6fd48f;
       }
+      #login .narrow {
+        max-width: 480px;
+        margin: clamp(24px, 8vh, 80px) auto 0;
+        padding: 28px clamp(20px, 5vw, 36px);
+        border-radius: 14px;
+        box-shadow: 0 12px 32px rgba(27, 36, 48, 0.08);
+      }
+      #login .top {
+        align-items: center;
+        gap: 12px;
+      }
+      #login .brand {
+        min-width: 0;
+        align-items: center;
+        gap: 7px;
+        font-size: clamp(1.05rem, 4vw, 1.3rem);
+        line-height: 1.25;
+      }
+      #login .brand-subtitle {
+        margin: 8px 0 18px;
+        font-size: 0.76rem;
+        line-height: 1.5;
+        letter-spacing: 0.08em;
+      }
+      #login > .narrow > p.mut:not(.small) {
+        margin: 0 0 20px;
+        line-height: 1.65;
+      }
+      #login .btns {
+        gap: 10px;
+      }
+      #login #guidebtn,
+      #login #loginbtn {
+        width: 100%;
+        min-height: 48px;
+        padding: 11px 16px;
+        border-radius: 9px;
+        font-weight: 650;
+      }
+      #login #guidebtn {
+        background: var(--card);
+        color: var(--ac);
+        border: 1px solid var(--ac);
+      }
+      #login #guidebtn:hover {
+        background: var(--thbg);
+      }
+      #login #loginbtn:hover {
+        filter: brightness(1.08);
+      }
+      #login label[for="em"] {
+        margin: 0 0 6px;
+        color: var(--tx);
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+      #login #em {
+        min-height: 48px;
+        padding: 11px 13px;
+        border-radius: 9px;
+      }
+      #login #em::placeholder {
+        color: var(--mut);
+        opacity: 0.78;
+      }
+      #login #em:focus-visible,
+      #login #guidebtn:focus-visible,
+      #login #loginbtn:focus-visible {
+        outline: 3px solid var(--ac);
+        outline-offset: 2px;
+      }
+      #login #emerr {
+        margin-top: 5px;
+      }
+      #login .small.okmsg {
+        margin: 0;
+      }
+      #login > .narrow > p.small {
+        margin: 18px 0 0;
+        padding-top: 14px;
+        border-top: 1px solid var(--bd);
+        text-align: center;
+        line-height: 1.5;
+      }
+      @media (max-width: 480px) {
+        #login .narrow {
+          padding: 22px 18px;
+        }
+      }
       @media print {
         html:root[data-theme] {
           --bg: #fff;
