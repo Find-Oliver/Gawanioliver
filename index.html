@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
-    <title>GawaNiOliver | Monthly Accomplishment Report</title>
+    <title>WorkNote by Oliver | Monthly Accomplishment Report</title>
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f5fbf'/%3E%3Cpath d='M9 16l5 5 9-10' stroke='%23f08a24' stroke-width='3' fill='none'/%3E%3C/svg%3E"
@@ -145,6 +145,136 @@
         color: var(--acx);
         border-color: var(--ac);
         font-weight: 600;
+      }
+      body.modal-open {
+        overflow: hidden;
+      }
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(11, 18, 32, 0.42);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.22s ease, visibility 0.22s ease;
+        z-index: 1000;
+      }
+      .modal.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      .modal-panel {
+        width: min(720px, 100%);
+        max-height: 80vh;
+        overflow: auto;
+        background: var(--card);
+        border: 1px solid var(--bd);
+        border-radius: 12px;
+        padding: 18px 18px 8px;
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.16);
+        transform: translateY(10px) scale(0.98);
+        transition: transform 0.24s ease;
+      }
+      .modal.show .modal-panel {
+        transform: translateY(0) scale(1);
+      }
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      .modal-header h2 {
+        margin: 0;
+      }
+      .modal-close {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid var(--bd);
+        background: var(--card);
+        color: var(--tx);
+        line-height: 1;
+        font-size: 1.5rem;
+        padding: 0;
+      }
+      .brand-subtitle {
+        margin: 0 0 10px;
+        color: var(--ac);
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .scroll-fab {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        z-index: 600;
+      }
+      .scroll-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--ac);
+        color: var(--acx);
+        border: 1px solid var(--ac);
+        box-shadow: 0 8px 18px rgba(31, 95, 191, 0.2);
+        font-size: 1.3rem;
+        line-height: 1;
+        padding: 0;
+      }
+      .scroll-btn:hover,
+      .scroll-btn:focus-visible {
+        filter: brightness(1.05);
+      }
+      .scroll-btn[hidden] {
+        display: none;
+      }
+      #flash {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        background: #eaf7ee;
+        color: #1f6b3a;
+        border: 1px solid #b9d9c2;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      #flash.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      #flash.error {
+        background: var(--badbg);
+        color: var(--bad);
+        border-color: #e7b3ae;
+      }
+      #flash.success {
+        background: #eaf7ee;
+        color: #1f6b3a;
+        border-color: #b9d9c2;
+      }
+      #addrow {
+        background: #2f9e44;
+        border-color: #2f9e44;
+        color: #fff;
+      }
+      #addrow:hover,
+      #addrow:focus-visible {
+        background: #27863a;
+        border-color: #27863a;
       }
       .grid {
         display: grid;
@@ -426,16 +556,38 @@
       </div>
     </div>
 
+    <div id="guidelineModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="guidelineTitle">
+      <div class="modal-panel">
+        <div class="modal-header">
+          <h2 id="guidelineTitle">How to use</h2>
+          <button type="button" class="modal-close" aria-label="Close guideline">×</button>
+        </div>
+        <ol>
+          <li>Mag-login gamit ang email mo. Sa email na iyon lang naka-save ang notes mo.</li>
+          <li>Sa <b>Hakbang 1</b>, ilagay ang title, department o office, period, at pangalan ng Prepared by. Required ang mga may asterisk (*).</li>
+          <li>Sa <b>Hakbang 2</b>, ilagay ang activity, ang mga office at qty nila, at ang Total. Pindutin ang <b>= Sum</b> kung gusto mong kunin ang Total mula sa sum ng mga office. Pindutin ang <b>Idagdag ang entry</b>.</li>
+          <li>Kung iba ang Total sa sum ng mga office, may ⚠ na babala. Hindi binabago ng app ang Total mo. Lumalabas lang ang babalang ito sa editing screen, hindi sa final report.</li>
+          <li>Sa <b>Hakbang 3</b>, piliin ang format ng table na gusto mo.</li>
+          <li>Piliin ang paper size, orientation, at margins. Pindutin ang <b>Gumawa ng table</b>. Pagkatapos, <b>Export to Word (.docx)</b>, <b>Kopyahin</b> para i-paste sa Excel, o <b>I-print</b>.</li>
+          <li>Mag-logout kapag tapos na, lalo na kung shared ang device.</li>
+        </ol>
+      </div>
+    </div>
+
     <div id="login" class="wrap noprint">
       <div class="card narrow">
         <div class="top">
-          <h1 class="brand">📋 Gawa<i>Ni</i>Oliver</h1>
+          <h1 class="brand">📋 WorkNote <i>by</i> Oliver</h1>
           <button type="button" class="tt"></button>
         </div>
+        <p class="brand-subtitle">WORK NOTES &amp; ACCOMPLISHMENT REPORTS</p>
         <p class="mut">
-          Mag-login gamit ang email mo. Ang notes mo ay hiwalay sa notes ng
-          ibang user.
+          Mag-login gamit ang email mo. Sa email na iyon lang naka-save ang
+          notes mo.
         </p>
+        <div class="btns" style="margin-top: 0; margin-bottom: 8px">
+          <button class="pri" id="guidebtn" type="button">Read the guideline</button>
+        </div>
         <label for="em">Email</label>
         <input
           id="em"
@@ -447,7 +599,7 @@
         <div class="btns">
           <button class="pri" id="loginbtn" type="button">Mag-login</button>
         </div>
-        <p class="mut small">Naka-save ang notes sa browser or sa Email.</p>
+        <p class="mut small">Naka-save ang notes sa Email mo.</p>
       </div>
     </div>
 
@@ -463,7 +615,7 @@
                 stroke-width="3"
                 fill="none"
               /></svg
-            >Gawa<i>Ni</i>Oliver
+            >WorkNote <i>by</i> Oliver
           </h1>
           <nav aria-label="Pangunahing menu">
             <button type="button" data-go="dash">Dashboard</button
@@ -480,6 +632,7 @@
           </div>
           <button type="button" id="logout">Mag-logout</button>
         </div>
+        <p class="brand-subtitle" style="margin-top: 10px; margin-bottom: 0;">WORK NOTES &amp; ACCOMPLISHMENT REPORTS</p>
       </div>
 
       <div class="card noprint" data-s="dash">
@@ -501,10 +654,8 @@
       <div class="card noprint" data-s="dash">
         <h2>Backup at restore</h2>
         <p class="mut small">
-          Naka-save ang data sa localStorage ng browser na ito at hindi
-          nagsi-sync sa ibang device. Mag-export ng JSON para sa backup. Ang
-          import ay nagdadagdag lang; hindi nito pinapalitan ang kasalukuyang
-          data.
+          Mag-export ng JSON para sa backup. Ang import ay nagdadagdag lang;
+          hindi nito pinapalitan ang kasalukuyang data.
         </p>
         <div class="btns">
           <button type="button" id="bexp">I-export ang JSON backup</button
@@ -591,38 +742,6 @@
           ></span>
         </div>
       </div>
-
-      <details class="card noprint" data-s="dash" open>
-        <summary>Paano gamitin</summary>
-        <ol>
-          <li>
-            Mag-login gamit ang email mo. Sa email na iyon lang naka-save ang
-            notes mo.
-          </li>
-          <li>
-            Sa <b>Hakbang 1</b>, ilagay ang title, department o office, period,
-            at pangalan ng Prepared by. Required ang mga may asterisk (*).
-          </li>
-          <li>
-            Sa <b>Hakbang 2</b>, ilagay ang activity, ang mga office at qty
-            nila, at ang Total. Pindutin ang <b>= Sum</b> kung gusto mong kunin
-            ang Total mula sa sum ng mga office. Pindutin ang
-            <b>Idagdag ang entry</b>.
-          </li>
-          <li>
-            Kung iba ang Total sa sum ng mga office, may ⚠ na babala. Hindi
-            binabago ng app ang Total mo. Lumalabas lang ang babalang ito sa
-            editing screen, hindi sa final report.
-          </li>
-          <li>Sa <b>Hakbang 3</b>, piliin ang format ng table na gusto mo.</li>
-          <li>
-            Piliin ang paper size, orientation, at margins. Pindutin ang
-            <b>Gumawa ng table</b>. Pagkatapos, <b>Export to Word (.docx)</b>,
-            <b>Kopyahin</b> para i-paste sa Excel, o <b>I-print</b>.
-          </li>
-          <li>Mag-logout kapag tapos na, lalo na kung shared ang device.</li>
-        </ol>
-      </details>
 
       <div class="card noprint" data-s="details">
         <h2>Hakbang 1: Detalye ng report</h2>
@@ -788,6 +907,11 @@
         </div>
         <div id="out"></div>
       </div>
+    </div>
+
+    <div class="scroll-fab noprint" aria-label="Page navigation">
+      <button type="button" id="scrollTopBtn" class="scroll-btn" aria-label="Scroll to top" title="Scroll to top">↑</button>
+      <button type="button" id="scrollBottomBtn" class="scroll-btn" aria-label="Scroll to bottom" title="Scroll to bottom">↓</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -968,6 +1092,35 @@
           $("#output").hidden = true;
         }
         $("#loginbtn").onclick = login;
+        $("#guidebtn").onclick = function () {
+          var m = $("#guidelineModal");
+          if (!m) return;
+          m.classList.add("show");
+          m.setAttribute("aria-hidden", "false");
+          document.body.classList.add("modal-open");
+        };
+        $(".modal-close").onclick = function () {
+          var m = $("#guidelineModal");
+          if (!m) return;
+          m.classList.remove("show");
+          m.setAttribute("aria-hidden", "true");
+          document.body.classList.remove("modal-open");
+        };
+        $("#guidelineModal").addEventListener("click", function (e) {
+          if (e.target === this) {
+            this.classList.remove("show");
+            this.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("modal-open");
+          }
+        });
+        document.addEventListener("keydown", function (e) {
+          var m = $("#guidelineModal");
+          if (e.key === "Escape" && m && m.classList.contains("show")) {
+            m.classList.remove("show");
+            m.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("modal-open");
+          }
+        });
         $("#em").addEventListener("keydown", function (e) {
           if (e.key === "Enter") login();
         });
@@ -1437,10 +1590,18 @@
           $("#output").hidden = false;
           $("#output").scrollIntoView({ behavior: "smooth", block: "start" });
         };
-        function flash(t) {
-          $("#flash").textContent = t;
-          setTimeout(function () {
-            $("#flash").textContent = "";
+        var flashTimer = null;
+        function flash(t, type) {
+          var el = $("#flash");
+          if (!el) return;
+          el.textContent = t;
+          el.classList.remove("show", "success", "error");
+          if (type) el.classList.add(type);
+          el.classList.add("show");
+          clearTimeout(flashTimer);
+          flashTimer = setTimeout(function () {
+            el.classList.remove("show", "success", "error");
+            el.textContent = "";
           }, 3000);
         }
         $("#copy").onclick = function () {
@@ -1757,12 +1918,13 @@
           });
           var m = missing();
           if (m.length) {
-            flash("Kulang o mali pa: " + m.join(", ") + ".");
+            flash("Kulang o mali pa: " + m.join(", ") + ".", "error");
             return;
           }
           if (!window.JSZip) {
             flash(
               "Hindi na-load ang JSZip. Kailangan ng internet para sa Word export.",
+              "error",
             );
             return;
           }
@@ -1778,17 +1940,14 @@
             })
             .then(
               function (r) {
-                flash(
-                  r && r.status === "saved"
-                    ? "Na-save ang Word file."
-                    : "Na-export ang file.",
-                );
+                flash("Export Successful! Your Word document is ready.", "success");
               },
               function (e) {
                 flash(
                   e && e.code === "declined"
                     ? "Hindi na-save (kinansela)."
                     : "Hindi na-export ang file.",
+                  "error",
                 );
               },
             );
@@ -1822,6 +1981,45 @@
             );
           };
         });
+        function updateScrollButtons() {
+          var topBtn = $("#scrollTopBtn"),
+            bottomBtn = $("#scrollBottomBtn"),
+            reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+              .matches;
+          if (!topBtn || !bottomBtn) return;
+          var atTop = window.scrollY <= 24;
+          var atBottom =
+            window.innerHeight + window.scrollY >=
+            document.documentElement.scrollHeight - 24;
+          topBtn.hidden = atTop;
+          bottomBtn.hidden = atBottom;
+          topBtn.setAttribute(
+            "aria-hidden",
+            atTop ? "true" : "false",
+          );
+          bottomBtn.setAttribute(
+            "aria-hidden",
+            atBottom ? "true" : "false",
+          );
+        }
+        $("#scrollTopBtn").addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+              ? "auto"
+              : "smooth",
+          });
+        });
+        $("#scrollBottomBtn").addEventListener("click", function () {
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+              ? "auto"
+              : "smooth",
+          });
+        });
+        window.addEventListener("scroll", updateScrollButtons, { passive: true });
+        updateScrollButtons();
         var nid = null,
           nd = false,
           sel = {},
