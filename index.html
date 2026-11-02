@@ -556,23 +556,30 @@
       </div>
     </div>
 
-    <div id="guidelineModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="guidelineTitle">
-      <div class="modal-panel">
-        <div class="modal-header">
-          <h2 id="guidelineTitle">How to use</h2>
-          <button type="button" class="modal-close" aria-label="Close guideline">×</button>
-        </div>
-        <ol>
-          <li>Mag-login gamit ang email mo. Sa email na iyon lang naka-save ang notes mo.</li>
-          <li>Sa <b>Hakbang 1</b>, ilagay ang title, department o office, period, at pangalan ng Prepared by. Required ang mga may asterisk (*).</li>
-          <li>Sa <b>Hakbang 2</b>, ilagay ang activity, ang mga office at qty nila, at ang Total. Pindutin ang <b>= Sum</b> kung gusto mong kunin ang Total mula sa sum ng mga office. Pindutin ang <b>Idagdag ang entry</b>.</li>
-          <li>Kung iba ang Total sa sum ng mga office, may ⚠ na babala. Hindi binabago ng app ang Total mo. Lumalabas lang ang babalang ito sa editing screen, hindi sa final report.</li>
-          <li>Sa <b>Hakbang 3</b>, piliin ang format ng table na gusto mo.</li>
-          <li>Piliin ang paper size, orientation, at margins. Pindutin ang <b>Gumawa ng table</b>. Pagkatapos, <b>Export to Word (.docx)</b>, <b>Kopyahin</b> para i-paste sa Excel, o <b>I-print</b>.</li>
-          <li>Mag-logout kapag tapos na, lalo na kung shared ang device.</li>
-        </ol>
-      </div>
+    
+<div id="guidelineModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="guidelineTitle">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <h2 id="guidelineTitle">How to Use</h2>
+      <button type="button" class="modal-close" aria-label="Close guideline">×</button>
     </div>
+
+    <p><b>Welcome to WorkNote by Oliver Plaza! 😊</b></p>
+    <p>This web app makes preparing your Monthly Accomplishment Report easier. Just follow these simple steps.</p>
+
+    <ol>
+      <li><b>Login:</b> Use your email. Your notes are saved under your email account.</li>
+      <li><b>Step 1 – Report Information:</b> Enter the report title, office, reporting period, and Prepared by. Fields marked with (*) are required.</li>
+      <li><b>Step 2 – Work Activities:</b> Enter your activities, offices, quantities, and Total. Click <b>= Sum</b> to calculate automatically or <b>Add Entry</b> to add another activity.</li>
+      <li><b>Check Your Entries:</b> If the Total doesn't match the sum of the office quantities, a warning will appear. The app will not automatically change your Total.</li>
+      <li><b>Step 3 – Table Format:</b> Choose your table format, paper size, orientation, and margins. Click <b>Create Table</b>.</li>
+      <li><b>Export or Print:</b> Choose <b>Export to Word (.docx)</b>, <b>Copy</b> to paste into Excel, or <b>Print</b>.</li>
+      <li><b>Logout:</b> Log out when finished, especially when using a shared computer.</li>
+    </ol>
+
+    <p><b>Friendly Reminder:</b> Take your time, double-check your information, and correct any mistakes before exporting or printing. You've got this! 👍</p>
+  </div>
+</div>
 
     <div id="login" class="wrap noprint">
       <div class="card narrow">
@@ -586,7 +593,7 @@
           notes mo.
         </p>
         <div class="btns" style="margin-top: 0; margin-bottom: 8px">
-          <button class="pri" id="guidebtn" type="button">Read the guideline</button>
+          <button class="pri" id="guidebtn" type="button">[Click Me] & Read How to Use </button>
         </div>
         <label for="em">Email</label>
         <input
@@ -599,7 +606,7 @@
         <div class="btns">
           <button class="pri" id="loginbtn" type="button">Mag-login</button>
         </div>
-        <p class="mut small">Naka-save ang notes sa Email mo.</p>
+        <p class="mut small">Your notes, your report, your way.</p>
       </div>
     </div>
 
