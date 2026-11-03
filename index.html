@@ -862,6 +862,8 @@
         <p class="brand-subtitle" style="margin-top: 10px; margin-bottom: 0;">WORK NOTES &amp; ACCOMPLISHMENT REPORTS</p>
       </div>
 
+      <div id="cloudNotice" class="card noprint" hidden></div>
+
       <div class="card noprint" data-s="dash">
         <h2>Dashboard</h2>
         <div class="grid" id="dstats"></div>
@@ -1141,6 +1143,7 @@
       <button type="button" id="scrollBottomBtn" class="scroll-btn" aria-label="Scroll to bottom" title="Scroll to bottom">↓</button>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.10/dist/umd/supabase.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script>
       (function () {
@@ -1162,7 +1165,32 @@
           user = null,
           D = null,
           editId = null,
-          armDel = null;
+          armDel = null,
+          cloudSyncTimer = null,
+          cloudState = {
+            reports: [],
+            currentRemoteId: null,
+            syncing: false,
+            lastSyncKey: 0,
+          },
+          authState = {
+            session: null,
+            userId: null,
+            email: null,
+          },
+          supabaseConfig = window.WORKNOTE_SUPABASE || {},
+          supabase =
+            window.supabase &&
+            supabaseConfig.url &&
+            supabaseConfig.anonKey
+              ? window.supabase.createClient(supabaseConfig.url, supabaseConfig.anonKey, {
+                  auth: {
+                    persistSession: true,
+                    autoRefreshToken: true,
+                    detectSessionInUrl: true,
+                  },
+                })
+              : null;
         var ls = {
           get: function (k) {
             try {
@@ -1200,6 +1228,54 @@
             }
           },
         };
+        function makeStableReportId() {
+          if (window.crypto && window.crypto.randomUUID) {
+            return window.crypto.randomUUID();
+          }
+          return "r-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+        }
+        function setCloudNotice(html, kind) {
+          var el = $("#cloudNotice");
+          if (!el) return;
+          if (!html) {
+            el.hidden = true;
+            el.innerHTML = "";
+            return;
+          }
+          el.hidden = false;
+          el.className = "card noprint" + (kind ? " " + kind : "");
+          el.innerHTML = html;
+        }
+        function normalizeReportData(report) {
+          var data = Object.assign({}, report || {});
+          data.id = data.id || makeStableReportId();
+          data.notes = Array.isArray(data.notes) ? data.notes : [];
+          data.entries = Array.isArray(data.entries) ? data.entries : [];
+          return data;
+        }
+        function localReportKeysForUser(targetUser) {
+          var emails = [];
+          try {
+            for (var i = 0; i < localStorage.length; i++) {
+              var key = localStorage.key(i);
+              if (!key || !/^pgso:data:/.test(key)) continue;
+              var keyUser = key.replace(/^pgso:data:/, "").trim().toLowerCase();
+              if (!keyUser) continue;
+              if (targetUser && keyUser !== String(targetUser).trim().toLowerCase()) continue;
+              emails.push(key);
+            }
+          } catch (e) {}
+          return emails;
+        }
+        function getCurrentCloudStatusText() {
+          if (!supabase) {
+            return "Supabase not configured. Add WORKNOTE_SUPABASE_URL and anon key.";
+          }
+          if (!authState.userId) {
+            return "Not signed in to cloud.";
+          }
+          return "Cloud sync ready.";
+        }
         var def = function () {
           return {
             title: "Monthly Accomplishment Report",
@@ -1242,12 +1318,15 @@
           delete D.reviewed;
         }
         function save() {
+          if (!user) return;
+          D.id = D.id || makeStableReportId();
           var ok = ls.set("pgso:data:" + user, JSON.stringify(D)),
             s = $("#savest");
           s.textContent = ok
             ? "Nai-save sa browser na ito."
             : "⚠ HINDI nai-save nang permanente. Mawawala ang notes pag isinara ang page.";
           s.style.color = ok ? "" : "var(--bad)";
+          if (supabase && authState.userId) scheduleCloudSync();
         }
         function applyPage() {
           var p = D.paper === "letter" ? "letter" : "A4",
@@ -1267,7 +1346,227 @@
         };
 
         /* login */
-        function login() {
+        async function hydrateCloudSession() {
+          if (!supabase) return false;
+          try {
+            var sessionData = await supabase.auth.getSession();
+            var session = sessionData && sessionData.data ? sessionData.data.session : null;
+            if (!session || !session.user) {
+              authState.session = null;
+              authState.userId = null;
+              authState.email = null;
+              return false;
+            }
+            authState.session = session;
+            authState.userId = session.user.id;
+            authState.email = session.user.email || "";
+            user = String(authState.email || "").trim().toLowerCase();
+            ss.set(user || null);
+            return true;
+          } catch (e) {
+            console.warn("Supabase session restore failed.", e);
+            return false;
+          }
+        }
+        async function loadCloudReports() {
+          if (!supabase || !authState.userId) {
+            cloudState.reports = [];
+            return [];
+          }
+          try {
+            var q = await supabase
+              .from("reports")
+              .select("id, owner_id, report_data, created_at, updated_at")
+              .eq("owner_id", authState.userId)
+              .order("updated_at", { ascending: false });
+            if (q.error) throw q.error;
+            cloudState.reports = q.data || [];
+            return cloudState.reports;
+          } catch (e) {
+            console.warn("Failed to load cloud reports.", e);
+            setCloudNotice(
+              '<div><b>Cloud sync issue</b><div class="mut small">' +
+                esc(String(e && e.message ? e.message : "Unable to load cloud reports.")) +
+                "</div></div>",
+              "warn",
+            );
+            return [];
+          }
+        }
+        async function syncCurrentReportToCloud() {
+          if (!supabase || !authState.userId || !D) return;
+          var reportId = D.id || cloudState.currentRemoteId || makeStableReportId();
+          D.id = reportId;
+          cloudState.currentRemoteId = reportId;
+          var token = ++cloudState.lastSyncKey;
+          var payload = normalizeReportData(D);
+          payload.id = reportId;
+          payload._meta = Object.assign({}, payload._meta || {}, {
+            ownerEmail: user,
+            lastSyncedAt: new Date().toISOString(),
+            importedFrom: "worknote-browser",
+          });
+          var saveState = $("#savest");
+          if (saveState) saveState.textContent = "Syncing to cloud...";
+          try {
+            var result = await supabase
+              .from("reports")
+              .upsert(
+                {
+                  id: reportId,
+                  owner_id: authState.userId,
+                  report_data: payload,
+                  updated_at: new Date().toISOString(),
+                },
+                { onConflict: "id" },
+              )
+              .select("id, updated_at")
+              .single();
+            if (result.error) throw result.error;
+            if (token !== cloudState.lastSyncKey) return;
+            if (saveState)
+              saveState.textContent = "Nai-save sa cloud at sa browser.";
+            await loadCloudReports();
+          } catch (e) {
+            console.warn("Cloud save failed.", e);
+            if (saveState)
+              saveState.textContent = "⚠ Hindi na-sync sa cloud. Puwede ulit subukan.";
+            setCloudNotice(
+              '<div><b>Cloud save failed</b><div class="mut small">' +
+                esc(String(e && e.message ? e.message : "Please try again later.")) +
+                "</div></div>",
+              "warn",
+            );
+          }
+        }
+        function scheduleCloudSync() {
+          if (!supabase || !authState.userId || !user || !D) return;
+          clearTimeout(cloudSyncTimer);
+          cloudSyncTimer = setTimeout(function () {
+            syncCurrentReportToCloud();
+          }, 500);
+        }
+        function showMigrationSummary() {
+          if (!supabase || !authState.userId) {
+            setCloudNotice(null);
+            return;
+          }
+          var keys = localReportKeysForUser(user);
+          if (!keys.length) {
+            setCloudNotice(
+              '<div><b>Cloud sync ready</b><div class="mut small">' +
+                getCurrentCloudStatusText() +
+                ". No saved browser-only reports were found for this account.</div></div>",
+              "ok",
+            );
+            return;
+          }
+          var list = keys
+            .slice(0, 5)
+            .map(function (key) {
+              return "<li>" + esc(key.replace(/^pgso:data:/, "")) + "</li>";
+            })
+            .join("");
+          var extra = keys.length > 5 ? '<li>... at ' + (keys.length - 5) + ' pa</li>' : "";
+          setCloudNotice(
+            '<div><b>Local browser notes found</b><div class="mut small">' +
+              keys.length +
+              " local report(s) under your current account are ready to import.</div><ul style=\"margin:10px 0 0 18px\">" +
+              list +
+              extra +
+              "</ul><div class=\"btns s\" style=\"margin-top:10px\"><button type=\"button\" id=\"migrateLocalBtn\">Import to cloud</button></div></div>",
+            "ok",
+          );
+          var migrateBtn = $("#migrateLocalBtn");
+          if (migrateBtn) {
+            migrateBtn.onclick = function () {
+              migrateLocalReports();
+            };
+          }
+        }
+        async function migrateLocalReports() {
+          if (!supabase || !authState.userId) {
+            setCloudNotice(
+              '<div><b>Cloud auth required</b><div class="mut small">Sign in to a verified account before importing local reports.</div></div>',
+              "warn",
+            );
+            return;
+          }
+          var keys = localReportKeysForUser(user);
+          if (!keys.length) {
+            showMigrationSummary();
+            return;
+          }
+          var backup = {
+            createdAt: new Date().toISOString(),
+            items: [],
+          };
+          keys.forEach(function (key) {
+            try {
+              var raw = ls.get(key);
+              if (!raw) return;
+              backup.items.push({ key: key, value: JSON.parse(raw) });
+            } catch (e) {
+              backup.items.push({ key: key, value: null });
+            }
+          });
+          ls.set("pgso:backup:" + user, JSON.stringify(backup));
+          var migrated = 0;
+          for (var i = 0; i < backup.items.length; i++) {
+            var item = backup.items[i];
+            var imported = item && item.value ? item.value : {};
+            var report = normalizeReportData(imported);
+            report.id = report.id || makeStableReportId();
+            report._meta = Object.assign({}, report._meta || {}, {
+              migration: "localStorage",
+              migrationKey: item.key,
+              migratedAt: new Date().toISOString(),
+            });
+            try {
+              var existing = await supabase
+                .from("reports")
+                .select("id")
+                .eq("id", report.id)
+                .maybeSingle();
+              if (existing && existing.error && existing.error.code !== "PGRST116") throw existing.error;
+              if (!existing || !existing.data) {
+                var result = await supabase.from("reports").insert({
+                  id: report.id,
+                  owner_id: authState.userId,
+                  report_data: report,
+                  updated_at: new Date().toISOString(),
+                });
+                if (result.error) throw result.error;
+              }
+              migrated += 1;
+            } catch (e) {
+              console.warn("Failed to import local report.", e);
+              setCloudNotice(
+                '<div><b>Import paused</b><div class="mut small">' +
+                  esc(String(e && e.message ? e.message : "Some local reports could not be imported.")) +
+                  ". The original browser backup remains available.</div></div>",
+                "warn",
+              );
+              return false;
+            }
+          }
+          if (migrated) {
+            setCloudNotice(
+              '<div><b>Local reports imported</b><div class="mut small">' +
+                migrated +
+                " browser report(s) were imported to the cloud and kept in a backup copy.</div></div>",
+              "ok",
+            );
+            await loadCloudReports();
+            return true;
+          }
+          setCloudNotice(
+            '<div><b>No migration needed</b><div class="mut small">The current account already matches the cloud data.</div></div>',
+            "ok",
+          );
+          return false;
+        }
+        async function login() {
           var v = $("#em").value.trim().toLowerCase(),
             e = $("#emerr");
           if (!v) {
@@ -1279,10 +1578,34 @@
               "Hindi valid ang email. Halimbawa: pangalan@example.com";
             return;
           }
-          e.textContent = "";
-          user = v;
-          ss.set(v);
-          start();
+          if (!supabase) {
+            e.textContent =
+              "Walang Supabase config. Hanapin ang WORKNOTE_SUPABASE_URL at anon key sa browser.";
+            return;
+          }
+          e.textContent = "Nagpapadala ng secure sign-in link...";
+          var btn = $("#loginbtn");
+          if (btn) btn.disabled = true;
+          try {
+            var result = await supabase.auth.signInWithOtp({
+              email: v,
+              options: {
+                emailRedirectTo: window.location.origin + window.location.pathname,
+              },
+            });
+            if (result.error) {
+              throw result.error;
+            }
+            e.textContent =
+              "I-check ang email mo para ma-verify ang account at mag-sign in.";
+            e.style.color = "var(--ac)";
+          } catch (error) {
+            e.textContent =
+              String(error && error.message ? error.message : "Hindi makapag-sign in sa ngayon.");
+            e.style.color = "var(--bad)";
+          } finally {
+            if (btn) btn.disabled = false;
+          }
         }
         function start() {
           $("#login").hidden = true;
@@ -1301,15 +1624,30 @@
           renderList();
           nreset();
           renderNotes();
+          setCloudNotice(null);
+          if (supabase && authState.userId) {
+            showMigrationSummary();
+            loadCloudReports();
+          }
           show("dash");
         }
-        function logout() {
+        async function logout() {
           if (
             nd &&
             !confirm("May hindi pa na-save na note. Mag-logout pa rin?")
           )
             return;
           nd = false;
+          if (supabase) {
+            try {
+              await supabase.auth.signOut();
+            } catch (e) {
+              console.warn("Supabase logout failed.", e);
+            }
+          }
+          authState.session = null;
+          authState.userId = null;
+          authState.email = null;
           ss.set(null);
           user = null;
           D = null;
@@ -1317,6 +1655,9 @@
           $("#login").hidden = false;
           $("#em").value = "";
           $("#output").hidden = true;
+          setCloudNotice(null);
+          $("#emerr").textContent = "";
+          $("#emerr").style.color = "";
         }
         $("#loginbtn").onclick = login;
         $("#guidebtn").onclick = function () {
@@ -2629,7 +2970,17 @@
         var u = ss.get();
         if (u) {
           user = u;
-          start();
+          hydrateCloudSession().then(function (ok) {
+            if (ok) {
+              start();
+            } else {
+              $("#login").hidden = false;
+              $("#app").hidden = true;
+            }
+          });
+        } else {
+          $("#login").hidden = false;
+          $("#app").hidden = true;
         }
       })();
     </script>
